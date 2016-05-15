@@ -45,6 +45,13 @@ BEGIN { FS = "\n"; RS = "" }
 	next
 }
 
+# Horizontal Ruler
+/^-[\t ]-([\t ]-)+/ {
+	gsub(/^[\t ]*-[\t ]-([\t ]-)+/,"")
+	printf("<hr>\n")
+	next
+}
+
 # Paragraph
 /^[A-Za-z0-9_("]+/ {
 	printf("<p>")
