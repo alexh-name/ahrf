@@ -31,6 +31,20 @@ BEGIN { FS = "\n"; RS = "" }
 	next
 }
 
+# Quote
+/^----+/ {
+	if (NF > 2 && $NF ~ /----+/) {
+		gsub(/^[\t ]*----+[\t ]*\n|\n[\t ]*----+[\t ]*$/,"")
+		printf("<blockquote>")
+		for (c=1; c<NF; c++) {
+			gsub(/^ +$/,"",$c)
+			printf("%s\n", $c)
+		}
+		printf("%s</blockquote>\n", $NF)
+	}
+	next
+}
+
 # Paragraph
 /^[A-Za-z0-9_("]+/ {
 	printf("<p>")
