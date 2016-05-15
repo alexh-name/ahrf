@@ -3,6 +3,12 @@
 
 BEGIN { FS = "\n"; RS = "" }
 
+# Include HTML without change
+/^<[^<>]+>/ {
+	print
+	next
+}
+
 {
 	# Common shell symbols to HTML
 	# Two backslashes for nawk(1) and OpenBSD awk(1)
