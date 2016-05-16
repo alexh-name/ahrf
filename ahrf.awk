@@ -104,11 +104,12 @@ BEGIN { FS = "\n"; RS = "" }
 		if (match($u,"\\[[0-9]+\\]")) {
 			# RSTART can be replaced by 1, because we removed useless tabs/spaces
 			num = substr($u,RSTART,RLENGTH)
+			n = substr($u,RSTART+1,RLENGTH-2)
 			url = substr($u,RSTART+RLENGTH+1)
 			if (length(url) >= 60) {
-				printf("\t<li>%s <a href=\"%s\">%.60s…</a></li>\n", num, url, url)
+				printf("\t<li id=\"link-%s\">%s <a href=\"%s\">%.60s…</a></li>\n", n, num, url, url)
 			} else {
-				printf("\t<li>%s <a href=\"%s\">%s</a></li>\n", num, url, url)
+				printf("\t<li id=\"link-%s\">%s <a href=\"%s\">%s</a></li>\n", n, num, url, url)
 			}
 		}
 	}
