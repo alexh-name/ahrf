@@ -2,7 +2,7 @@ ahrf - [a]scii (or [a]wk) [h]uman [r]eadable [f]ile
 ---------------------------------------------------
 
 ahrf is an `awk` script designed to interpret a simple and straightforward
-ascii file format. I wrote it to share my personal documentation, which is
+ASCII file format. I wrote it to share my personal documentation, which is
 written in plain text files. They can be exported to HTML.  
 The main goal was... readability.
 
@@ -38,10 +38,10 @@ Syntax
 and so on...
 
 ```
-::: ::: for <h3><h3>
-:::: :::: for <h4><h4>
-::::: ::::: for <h5><h5>
-:::::: :::::: for <h6><h6>
+::: ::: for <h3></h3>
+:::: :::: for <h4></h4>
+::::: ::::: for <h5></h5>
+:::::: :::::: for <h6></h6>
 ```
 
 It's possible to define a heading, without the second `:::` field (but it
@@ -89,7 +89,7 @@ Paragraphs can start by:
 * `0-9`: From `0` to `9`
 * `A-Z`: All letters uppercase
 * `a-z`: All letters lowercase
-* `_`, `(`, `"`
+* `_`, `(`, `"`, <code>`</code>
 
 #### Code block: `<pre><code></code></pre>`
 
@@ -241,8 +241,7 @@ I used `nawk` when I wrote this script. It can be found
 [here](http://www.cs.princeton.edu/~bwk/btl.mirror/).
 
 `make all` (or simply `make`) will launch the tests for every variants
-specified in `AWKV`. On your system, the executables are probably
-located in a different directory. So, try to change `BDIR` accordingly.
+specified in `AWKV`.
 
 This script wasn't created to mimic or replace `markdown` syntax. Therefore,
 I do not ask or force anybody to adopt it. I want to write my own documentation
@@ -254,11 +253,6 @@ bad matches.
 I'm not even talking about the dozens of differents variants /
 implementations... And do not tell me I don't know what I'm talking about
 because I "played" thousands of times with `markdown`.
-
-TODO
-----
-
-- [ ] Blockquote?
 
 Issues
 ------
