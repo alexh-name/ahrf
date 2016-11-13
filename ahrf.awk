@@ -61,9 +61,18 @@ BEGIN { FS = "\n"; RS = "" }
 		gsub(/ +$/,"<br>\n",$p)
 		x = split($p,word," ")
 		for (w=1; w<=x; w++) {
-			if (word[w] ~ /^(``)|(``)$/) {
+			if (word[w] ~ /^(\/|\*|``)|(\/|\*|``)$/) {
+				sub(/^\//,"<i>",word[w])
+				sub(/\/$/,"</i>",word[w])
+
 				sub(/^``/,"<code>",word[w])
 				sub(/``$/,"</code>",word[w])
+
+				sub(/^\*\*/,"<b><i>",word[w])
+				sub(/\*\*$/,"</i></b>",word[w])
+
+				sub(/^\*/,"<b>",word[w])
+				sub(/\*$/,"</b>",word[w])
 			}
 			printf("%s", word[w])
 			# If EOL is not reached, add a space
