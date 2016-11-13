@@ -9,7 +9,6 @@ TESTREG="BLOCK_CODE_PRE
 	LIST_UL
 	PAGE_LINKS_A
 	PARAGRAPH_P
-	TABLES_TD
 	TITLES_H"
 OUTE="outvalid"
 GENE="gen"
@@ -25,8 +24,10 @@ for f in $TESTREG; do
 		printf "%s\n" "$f / ${f}.${OUTE} is missing!" >&2
 		exit 1
 	fi
-	"${1:-awk}" -f ../ahrf.awk "$f" >"${f}.${GENE}" || exit 1
-	if diff -u "${f}.${OUTE}" "${f}.${GENE}"; then
+	"${1:-awk}" -f ../ahrf.awk "$f" >"${f}.${GENE}"
+	[ $? -ne 0 ] && exit 1
+	diff -u "${f}.${OUTE}" "${f}.${GENE}"
+	if [ $? -eq 0 ]; then
 		printf "%-20s%s\n" "* $f" "...  OK" && rm "${f}.${GENE}"
 	fi
 done
